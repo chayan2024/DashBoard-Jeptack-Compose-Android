@@ -2,10 +2,12 @@ package com.withjetpack.dashboard_jeptack_compose_android
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -21,8 +23,25 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    LazyGridWithImagesAndText()
+                    Column(
+                        modifier = Modifier.fillMaxSize()
+                    ) {
+                        // TopAppBar at the top
+                        TopAppBar(
+                            title = { Text("Vehicle Dashboard") },
+                            navigationIcon = {
+                                Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null)
+                            },
+                            actions = {
+                                Icon(imageVector = Icons.Default.Settings, contentDescription = null)
+                            }
+                        )
+
+                        // LazyGridWithImagesAndText below the TopAppBar
+                        LazyGridWithImagesAndText()
+                    }
                 }
+
             }
         }
     }
